@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wikipedia Viewer</title>
+</head>
+
+<body>
+  <div ng-app="wikiApp">
+    <div ng-controller="wikiController" class="container">
+
+      <div class="topBar">
+        <h1><i class="letterW fa fa-wikipedia-w" aria-hidden="true"></i>ikipedia Viewer</h1>
+        <div class="search">
+          <input ng-model="value" ng-keypress="getArticle($event, value)" class="searchBar" type="text" placeholder="Search Wikipedia">
+          <i ng-click="getArticle($event, value)" class="searchIcon fa fa-search" aria-hidden="true"></i>
+          <span class="divider">|</span>
+          <input ng-click="getArticle()" class="submitBtn" type="button" value="Get Random Wikipedia Article">
+        </div>
+      </div>
+
+      <h2 class="message">{{message}}</h2>
+
+      <div class="wikiResults animate" ng-repeat="data in contentData">
+        <div class="wikiArticle">
+          <div class="wikiInfo">
+            <h2><a href={{data.url}} target="_blank">{{data.title}}</a></h2>
+            <div class="image" ng-bind-html="image"></div>
+            {{data.extract}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+<footer>
+  Created By Johnny Bui, 2016
+</footer>
+
+</html>
